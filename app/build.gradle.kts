@@ -71,6 +71,8 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.coroutines.android)
     implementation(libs.firebase.appdistribution.gradle)
+    implementation(libs.datastore)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
 import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.ProductDetailViewModel
+import coil.compose.rememberAsyncImagePainter
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,9 +42,8 @@ fun ProductDetailScreen(
                     .verticalScroll(rememberScrollState())
                     .fillMaxSize()
             ) {
-                // Imagem do produto
                 Image(
-                    painter = rememberImagePainter(product.image),
+                    painter = rememberAsyncImagePainter(product.image),
                     contentDescription = "Product Image",
                     modifier = Modifier
                         .fillMaxWidth()
@@ -53,21 +52,18 @@ fun ProductDetailScreen(
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Título do produto
                 Text(
                     text = product.title,
                     style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(horizontal = 16.dp)
                 )
 
-                // Preço
                 Text(
                     text = "Preço: $${product.price}",
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                 )
 
-                // Descrição
                 Text(
                     text = product.description,
                     style = MaterialTheme.typography.bodyMedium,
@@ -75,7 +71,6 @@ fun ProductDetailScreen(
                 )
             }
         } ?: run {
-            // Exibindo um carregando enquanto a API está sendo chamada
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center

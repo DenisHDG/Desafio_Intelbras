@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import br.com.denis.desafio_intelbras.feature.products.framework.models.Product
-import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.ProductViewModel
+import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.ProductDetailsViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -24,9 +24,10 @@ import org.koin.androidx.compose.koinViewModel
 fun ProductListScreen(
     navController: NavHostController,
     categoryName: String,
-    viewModel: ProductViewModel = koinViewModel(),
+    viewModel: ProductDetailsViewModel = koinViewModel(),
 ) {
     val products by viewModel.products.collectAsState()
+    val favorites by viewModel.favorites.collectAsState()  // Obtem o estado dos favoritos
 
     LaunchedEffect(categoryName) {
         viewModel.fetchProductsByCategory(categoryName)
@@ -41,37 +42,12 @@ fun ProductListScreen(
         ) {
             items(products) { product ->
                 ProductItem(
-                    navController = navController,
-                    product = product
+                    product = product,
+                    isFavorite = favorites.contains(product.id),
+                    onFavoriteClick = { viewModel.toggleFavorite(it) },
+                    onItemClick = { id -> navController.navigate("product_detail_rout/$id") }
                 )
             }
         }
     }
-}
-
-@Composable
-fun ProductItem(
-    navController: NavHostController, product: Product
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-            .clickable {
-                navController.navigate("product_detail_rout/${product.id}")
-            },
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = product.title,
-            style = MaterialTheme.typography.bodyLarge,
-            modifier = Modifier.weight(1f)
-        )
-        Icon(
-            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-            contentDescription = "Arrow Icon",
-            modifier = Modifier.padding(start = 8.dp)
-        )
-    }
-    HorizontalDivider()
 }
