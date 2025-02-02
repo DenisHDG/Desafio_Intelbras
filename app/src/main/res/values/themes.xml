@@ -2,4 +2,12 @@
 <resources>
 
     <style name="Theme.Desafio_Intelbras" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Tema para a Splash Screen -->
+    <style name="Theme.MyApp.Splash" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- Define o background para a cor desejada -->
+        <item name="android:windowBackground">@color/splash_background</item>
+        <!-- Opcional: remover animação de transição -->
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
 </resources>
