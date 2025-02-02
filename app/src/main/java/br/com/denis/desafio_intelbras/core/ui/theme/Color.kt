@@ -1,4 +1,4 @@
-package br.com.denis.desafio_intelbras.ui.theme
+package br.com.denis.desafio_intelbras.core.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

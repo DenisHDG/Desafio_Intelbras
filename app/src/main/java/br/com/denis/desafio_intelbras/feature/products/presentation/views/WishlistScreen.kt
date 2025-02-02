@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import br.com.denis.desafio_intelbras.ui.component.MyScreenContent
+import br.com.denis.desafio_intelbras.core.ui.component.MyScreenContent
 
 @Composable
 fun WishlistScreen(navController: NavController) {

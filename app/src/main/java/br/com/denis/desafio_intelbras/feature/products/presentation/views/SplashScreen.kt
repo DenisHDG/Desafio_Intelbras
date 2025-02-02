@@ -13,8 +13,8 @@ import androidx.navigation.NavController
 import br.com.denis.desafio_intelbras.R
 import br.com.denis.desafio_intelbras.feature.products.navigation.ROUT_HOME
 import br.com.denis.desafio_intelbras.feature.products.navigation.ROUT_SPLASH
-import br.com.denis.desafio_intelbras.ui.component.MyScreenContent
-import br.com.denis.desafio_intelbras.ui.theme.PrimaryColorIntelbras
+import br.com.denis.desafio_intelbras.core.ui.component.MyScreenContent
+import br.com.denis.desafio_intelbras.core.ui.theme.PrimaryColorIntelbras
 import kotlinx.coroutines.delay
 
 const val delayTime = 3000L

@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import br.com.denis.desafio_intelbras.feature.products.navigation.ROUT_CATEGORIES
 import br.com.denis.desafio_intelbras.feature.products.navigation.ROUT_WISHLIST
-import br.com.denis.desafio_intelbras.ui.component.MyScreenContent
+import br.com.denis.desafio_intelbras.core.ui.component.MyScreenContent
 
 @Composable
 fun HomeScreen(navController: NavController) {

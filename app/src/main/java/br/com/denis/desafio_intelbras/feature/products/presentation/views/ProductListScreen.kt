@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import br.com.denis.desafio_intelbras.feature.products.framework.models.Product
 import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.ProductViewModel
 import org.koin.androidx.compose.koinViewModel
@@ -21,40 +22,44 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductListScreen(
+    navController: NavHostController,
     categoryName: String,
     viewModel: ProductViewModel = koinViewModel(),
 ) {
-    // Coleta os dados de produtos da ViewModel
     val products by viewModel.products.collectAsState()
 
-    // Aciona a busca de produtos para a categoria selecionada
     LaunchedEffect(categoryName) {
         viewModel.fetchProductsByCategory(categoryName)
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(title = { Text("Produtos: $categoryName") })
-        }
-    ) { padding ->
+    Scaffold(topBar = {
+        TopAppBar(title = { Text("Produtos: $categoryName") })
+    }) { padding ->
         LazyColumn(
             contentPadding = padding,
             modifier = Modifier.fillMaxSize()
         ) {
             items(products) { product ->
-                ProductItem(product = product)
+                ProductItem(
+                    navController = navController,
+                    product = product
+                )
             }
         }
     }
 }
 
 @Composable
-fun ProductItem(product: Product) {
+fun ProductItem(
+    navController: NavHostController, product: Product
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable { /* Navegar para a tela de detalhes do produto */ },
+            .clickable {
+                navController.navigate("product_detail_rout/${product.id}")
+            },
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
@@ -68,5 +73,5 @@ fun ProductItem(product: Product) {
             modifier = Modifier.padding(start = 8.dp)
         )
     }
-    Divider()
+    HorizontalDivider()
 }

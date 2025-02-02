@@ -1,4 +1,4 @@
-package br.com.denis.desafio_intelbras.remote
+package br.com.denis.desafio_intelbras.core.remote
 
 import br.com.denis.desafio_intelbras.feature.products.framework.api.ServiceAPI
 import retrofit2.Retrofit

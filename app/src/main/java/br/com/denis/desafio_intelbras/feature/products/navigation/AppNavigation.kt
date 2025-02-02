@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.com.denis.desafio_intelbras.feature.products.presentation.views.CategoryListScreen
 import br.com.denis.desafio_intelbras.feature.products.presentation.views.HomeScreen
+import br.com.denis.desafio_intelbras.feature.products.presentation.views.ProductDetailScreen
 import br.com.denis.desafio_intelbras.feature.products.presentation.views.ProductListScreen
 import br.com.denis.desafio_intelbras.feature.products.presentation.views.SplashScreen
 import br.com.denis.desafio_intelbras.feature.products.presentation.views.WishlistScreen
@@ -14,7 +15,8 @@ const val ROUT_SPLASH = "splash_rout"
 const val ROUT_HOME = "home_rout"
 const val ROUT_CATEGORIES = "categories_rout"
 const val ROUT_WISHLIST = "wishlist_rout"
-const val ROUT_PRODUCT_LIST = "productList_rout/{category}"
+const val ROUT_PRODUCT_LIST = "product_list_rout/{category}"
+const val ROUT_PRODUCT_DETAIL = "product_detail_rout/{productId}"
 
 @Composable
 fun AppNavigation() {
@@ -31,7 +33,7 @@ fun AppNavigation() {
                 navController = navController,
                 onItemClick = { category ->
                     // Navega para a lista de produtos
-                    navController.navigate("productList/$category")
+                    navController.navigate("product_list_rout/$category")
                 }
             )
         }
@@ -39,11 +41,20 @@ fun AppNavigation() {
             WishlistScreen(navController)
         }
 
-        // Navegação para a lista de produtos
-        composable("productList/{category}") { backStackEntry ->
+        composable(ROUT_PRODUCT_LIST) { backStackEntry ->
             val category = backStackEntry.arguments?.getString("category")
             category?.let { categoryName ->
-                ProductListScreen(categoryName = categoryName)
+                ProductListScreen(
+                    navController = navController,
+                    categoryName = categoryName
+                )
+            }
+        }
+
+        composable(ROUT_PRODUCT_DETAIL) { backStackEntry ->
+            val productId = backStackEntry.arguments?.getString("productId")?.toInt()
+            productId?.let { id ->
+                ProductDetailScreen(productId = id)
             }
         }
     }

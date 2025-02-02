@@ -1,8 +1,8 @@
-package br.com.denis.desafio_intelbras.ui.component
+package br.com.denis.desafio_intelbras.core.ui.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import br.com.denis.desafio_intelbras.ui.theme.PrimaryColorIntelbras
+import br.com.denis.desafio_intelbras.core.ui.theme.PrimaryColorIntelbras
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable

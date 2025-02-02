@@ -1,4 +1,4 @@
-package br.com.denis.desafio_intelbras.ui.theme
+package br.com.denis.desafio_intelbras.core.ui.theme
 
 import android.app.Activity
 import android.os.Build

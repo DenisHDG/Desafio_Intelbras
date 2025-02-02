@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.denis.desafio_intelbras.feature.products.navigation.AppNavigation
-import br.com.denis.desafio_intelbras.ui.theme.Desafio_IntelbrasTheme
+import br.com.denis.desafio_intelbras.core.ui.theme.Desafio_IntelbrasTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.koin.compose)
     implementation(libs.androidx.foundation)
+    implementation(libs.coil.compose)
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.ui)
