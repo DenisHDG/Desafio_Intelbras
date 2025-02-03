@@ -9,12 +9,9 @@ import br.com.denis.desafio_intelbras.feature.products.domain.usecases.GetProduc
 import br.com.denis.desafio_intelbras.feature.products.framework.models.Product
 import br.com.denis.desafio_intelbras.feature.products.framework.models.toFavoriteProduct
 import kotlinx.coroutines.Dispatchers
-
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -30,20 +27,16 @@ class ProductDetailsViewModel(
     private val _products = MutableStateFlow<List<Product>>(emptyList())
     val products: StateFlow<List<Product>> = _products
 
-    // Agora o favorites será coletado dentro de uma coroutine
     private val _favorites = MutableStateFlow<List<FavoriteProduct>>(emptyList())
     val favorites: StateFlow<List<FavoriteProduct>> = _favorites
 
     init {
-        // Coletando os favoritos ao inicializar o ViewModel
         getFavorites()
     }
 
-    // Função suspend que coleta os favoritos
     private fun getFavorites() {
         viewModelScope.launch(Dispatchers.IO) {
             val result = favoriteUseCase.getFavorites().first()
-            // Atualiza o StateFlow na Main Thread
             withContext(Dispatchers.Main) {
                 _favorites.value = result
             }
@@ -62,8 +55,9 @@ class ProductDetailsViewModel(
     }
 
     fun toggleFavorite(product: Product) {
-        viewModelScope.launch(Dispatchers.IO) {  // 🚀 Mudança aqui
+        viewModelScope.launch(Dispatchers.IO) {
             favoriteUseCase.toggleFavorite(product.toFavoriteProduct())
+            getFavorites()
         }
     }
 
