@@ -14,19 +14,17 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/baseline_production_quantity_limits_24"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApp.Splash"
         tools:targetApi="31">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Desafio_Intelbras">
+            android:theme="@style/Theme.MyApp.Splash"> <!-- Splash Theme aqui -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+    </application>
 </manifest>

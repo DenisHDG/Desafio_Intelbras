@@ -16,6 +16,7 @@ import br.com.denis.desafio_intelbras.core.ui.theme.Desafio_IntelbrasTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_MyApp)
         super.onCreate(savedInstanceState)
         setContent {
             Desafio_IntelbrasTheme {
