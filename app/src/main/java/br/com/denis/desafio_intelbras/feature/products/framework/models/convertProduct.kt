@@ -12,16 +12,3 @@ fun Product.toFavoriteProduct(): FavoriteProduct {
         image = this.image
     )
 }
-
-//// Converte FavoriteProduct para Product
-//fun FavoriteProduct.toProduct(): Product {
-//    return Product(
-//        id = this.id,
-//        title = this.title,
-//        description = this.description,
-//        price = this.price,
-//        category = this.category,
-//        image = this.image
-//        // Adicione outros campos se necessário
-//    )
-//}

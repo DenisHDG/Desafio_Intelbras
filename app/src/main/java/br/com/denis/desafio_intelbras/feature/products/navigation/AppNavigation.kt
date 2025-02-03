@@ -18,6 +18,8 @@ const val ROUT_CATEGORIES = "categories_rout"
 const val ROUT_WISHLIST = "wishlist_rout"
 const val ROUT_PRODUCT_LIST = "product_list_rout/{category}"
 const val ROUT_PRODUCT_DETAIL = "product_detail_rout/{productId}"
+const val CATEGORY = "category"
+const val PRODUCT_ID = "productId"
 
 @Composable
 fun AppNavigation() {
@@ -33,7 +35,6 @@ fun AppNavigation() {
             CategoryListScreen(
                 navController = navController,
                 onItemClick = { category ->
-                    // Navega para a lista de produtos
                     navController.navigate("product_list_rout/$category")
                 }
             )
@@ -43,7 +44,7 @@ fun AppNavigation() {
         }
 
         composable(ROUT_PRODUCT_LIST) { backStackEntry ->
-            val category = backStackEntry.arguments?.getString("category")
+            val category = backStackEntry.arguments?.getString(CATEGORY)
             category?.let { categoryName ->
                 ProductListScreen(
                     navController = navController,
@@ -53,11 +54,12 @@ fun AppNavigation() {
         }
 
         composable(ROUT_PRODUCT_DETAIL) { backStackEntry ->
-            val productId = backStackEntry.arguments?.getString("productId")?.toInt()
+            val productId = backStackEntry.arguments?.getString(PRODUCT_ID)?.toInt()
             productId?.let { id ->
                 ProductDetailScreen(
                     navController = navController,
-                    productId = id)
+                    productId = id
+                )
             }
         }
     }

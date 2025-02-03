@@ -7,20 +7,22 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-private val Context.dataStore by preferencesDataStore("favorites_prefs")
+
+const val FAVORITE_KEY = "favorites"
+const val FAVORITE_PREFS = "favorites_prefs"
+
+private val Context.dataStore by preferencesDataStore(FAVORITE_PREFS)
 
 class FavoriteDataStore(private val context: Context) {
-    private val FAVORITES_KEY = stringSetPreferencesKey("favorites")
+    private val key = stringSetPreferencesKey(FAVORITE_KEY)
 
-    // Fluxo que converte o Set<String> em Set<Int>
     val favorites: Flow<Set<Int>> = context.dataStore.data.map { preferences ->
-        preferences[FAVORITES_KEY]?.map { it.toInt() }?.toSet() ?: emptySet()
+        preferences[key]?.map { it.toInt() }?.toSet() ?: emptySet()
     }
 
-    // Função para adicionar/remover favoritos
     suspend fun toggleFavorite(productId: Int) {
         context.dataStore.edit { preferences ->
-            val currentFavorites = preferences[FAVORITES_KEY]?.toMutableSet() ?: mutableSetOf()
+            val currentFavorites = preferences[key]?.toMutableSet() ?: mutableSetOf()
             val idAsString = productId.toString()
 
             if (currentFavorites.contains(idAsString)) {
@@ -28,7 +30,7 @@ class FavoriteDataStore(private val context: Context) {
             } else {
                 currentFavorites.add(idAsString)
             }
-            preferences[FAVORITES_KEY] = currentFavorites
+            preferences[key] = currentFavorites
         }
     }
 }

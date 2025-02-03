@@ -1,3 +1,14 @@
 <resources>
+    <!--app-->
     <string name="app_name">Desafio_Intelbras</string>
+
+    <!--home-->
+    <string name="home_screen_category_list">Listar Categorias</string>
+    <string name="home_screen_wish_list">Lista de Desejos</string>
+
+    <!--productDetailScreen-->
+    <string name="product_price">Preço: $%1$s</string>
+    <string name="product_details">Detalhes do Produto</string>
+
+
 </resources>

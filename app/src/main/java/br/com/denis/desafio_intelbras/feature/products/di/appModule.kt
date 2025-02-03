@@ -7,7 +7,6 @@ import br.com.denis.desafio_intelbras.feature.products.domain.usecases.FetchProd
 import br.com.denis.desafio_intelbras.feature.products.domain.usecases.GetCategoriesUseCase
 import br.com.denis.desafio_intelbras.feature.products.domain.usecases.GetProductDetailUseCase
 import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.CategoryViewModel
-import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.ProductDetailViewModel
 import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.ProductDetailsViewModel
 import br.com.denis.desafio_intelbras.core.remote.RetrofitInstance
 import br.com.denis.desafio_intelbras.feature.products.domain.data.FavoriteRepository

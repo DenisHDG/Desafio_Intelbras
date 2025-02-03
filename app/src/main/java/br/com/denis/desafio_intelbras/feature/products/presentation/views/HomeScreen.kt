@@ -10,8 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import br.com.denis.desafio_intelbras.R
 import br.com.denis.desafio_intelbras.feature.products.navigation.ROUT_CATEGORIES
 import br.com.denis.desafio_intelbras.feature.products.navigation.ROUT_WISHLIST
 import br.com.denis.desafio_intelbras.core.ui.component.MyScreenContent
@@ -32,11 +34,11 @@ fun HomeScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(onClick = { navController.navigate(ROUT_CATEGORIES) }) {
-                Text(text = "Listar Categorias")
+                Text(text = stringResource(R.string.home_screen_category_list))
             }
 
             Button(onClick = { navController.navigate(ROUT_WISHLIST) }) {
-                Text(text = "Lista de Desejos")
+                Text(text = stringResource(R.string.home_screen_wish_list))
             }
         }
     }

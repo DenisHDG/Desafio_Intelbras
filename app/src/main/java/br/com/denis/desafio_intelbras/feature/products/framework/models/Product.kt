@@ -15,6 +15,6 @@ data class Product(
 
 @Serializable
 data class Rating(
-    val rate: Double?  ,
+    val rate: Double?,
     val count: Int?
 )

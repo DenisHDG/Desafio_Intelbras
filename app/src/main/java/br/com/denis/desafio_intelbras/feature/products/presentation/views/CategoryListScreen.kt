@@ -73,7 +73,7 @@ fun CategoryListScreen(
                         modifier = Modifier.padding(start = 8.dp)
                     )
                 }
-                Divider()
+                HorizontalDivider()
             }
         }
     }

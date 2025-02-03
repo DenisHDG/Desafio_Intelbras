@@ -16,8 +16,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import br.com.denis.desafio_intelbras.R
 import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.ProductDetailsViewModel
 import coil.compose.rememberAsyncImagePainter
 import org.koin.androidx.compose.koinViewModel
@@ -39,7 +41,7 @@ fun ProductDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Detalhes do Produto") },
+                title = { Text(stringResource(R.string.product_details)) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Voltar")
@@ -82,7 +84,7 @@ fun ProductDetailScreen(
                 )
 
                 Text(
-                    text = "Preço: $${product.price}",
+                    text = stringResource(R.string.product_price, product.price),
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                 )
