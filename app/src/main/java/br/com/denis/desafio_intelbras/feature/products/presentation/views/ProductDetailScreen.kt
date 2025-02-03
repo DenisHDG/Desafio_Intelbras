@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.*
@@ -16,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.ProductDetailsViewModel
 import coil.compose.rememberAsyncImagePainter
 import org.koin.androidx.compose.koinViewModel
@@ -23,6 +25,7 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProductDetailScreen(
+    navController: NavHostController,
     productId: Int,
     viewModel: ProductDetailsViewModel = koinViewModel()
 ) {
@@ -37,6 +40,11 @@ fun ProductDetailScreen(
         topBar = {
             TopAppBar(
                 title = { Text("Detalhes do Produto") },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Voltar")
+                    }
+                },
                 actions = {
                     productDetails.value?.let { product ->
                         IconButton(onClick = { viewModel.toggleFavorite(product) }) {

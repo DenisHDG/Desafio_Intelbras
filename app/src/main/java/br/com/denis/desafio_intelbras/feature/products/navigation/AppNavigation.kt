@@ -55,7 +55,9 @@ fun AppNavigation() {
         composable(ROUT_PRODUCT_DETAIL) { backStackEntry ->
             val productId = backStackEntry.arguments?.getString("productId")?.toInt()
             productId?.let { id ->
-                ProductDetailScreen(productId = id)
+                ProductDetailScreen(
+                    navController = navController,
+                    productId = id)
             }
         }
     }
