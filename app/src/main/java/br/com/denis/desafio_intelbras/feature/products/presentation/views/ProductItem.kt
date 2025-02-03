@@ -22,14 +22,14 @@ import br.com.denis.desafio_intelbras.feature.products.framework.models.Product
 fun ProductItem(
     product: Product,
     isFavorite: Boolean,
-    onFavoriteClick: (Int) -> Unit,
+    onFavoriteClick: (Int) -> Unit, // ou (Int) ou (Product) dependendo da sua assinatura
     onItemClick: (Int) -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable { onItemClick(product.id) },  // Navega para detalhes ao clicar no item
+            .clickable { onItemClick(product.id) },
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
@@ -37,7 +37,7 @@ fun ProductItem(
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.weight(1f)
         )
-        IconButton(onClick = { onFavoriteClick(product.id) }) {  // Alterna o favorito
+        IconButton(onClick = { onFavoriteClick(product.id) }) {
             Icon(
                 imageVector = if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                 contentDescription = "Favorite Icon"

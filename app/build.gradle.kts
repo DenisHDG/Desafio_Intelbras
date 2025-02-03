@@ -1,8 +1,10 @@
-import com.android.build.api.dsl.Packaging
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.kapt")
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
+
 }
 
 android {
@@ -72,7 +74,11 @@ dependencies {
     implementation(libs.coroutines.android)
     implementation(libs.firebase.appdistribution.gradle)
     implementation(libs.datastore)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
+    kapt(libs.room.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

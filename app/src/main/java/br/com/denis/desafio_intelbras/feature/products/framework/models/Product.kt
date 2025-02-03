@@ -1,5 +1,8 @@
 package br.com.denis.desafio_intelbras.feature.products.framework.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Product(
     val id: Int,
     val title: String,
@@ -10,7 +13,8 @@ data class Product(
     val rating: Rating
 )
 
+@Serializable
 data class Rating(
-    val rate: Double,
-    val count: Int
+    val rate: Double?  ,
+    val count: Int?
 )
