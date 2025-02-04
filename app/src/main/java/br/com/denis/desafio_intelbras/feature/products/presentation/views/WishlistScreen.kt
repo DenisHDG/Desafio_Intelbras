@@ -32,9 +32,7 @@ fun WishlistScreen(
     navController: NavHostController,
     viewModel: ProductDetailsViewModel = koinViewModel()
 ) {
-    // Coletando os favoritos e os produtos de forma reativa
-    val favorites by viewModel.favorites.collectAsState(initial = emptyList())  // Coleta os favoritos do ViewModel
-    val products by viewModel.products.collectAsState(initial = emptyList())  // Coleta os produtos
+    val favorites by viewModel.favorites.collectAsState(initial = emptyList())
 
     Scaffold(
         topBar = {
@@ -64,7 +62,6 @@ fun WishlistScreen(
                     .fillMaxSize()
             ) {
                 items(favorites) { favoriteProduct ->
-                    // Aqui converte FavoriteProduct para Product antes de passar para ProductItem
                     ProductItem(
                         product = favoriteProduct.toProduct(),
                         isFavorite = true,

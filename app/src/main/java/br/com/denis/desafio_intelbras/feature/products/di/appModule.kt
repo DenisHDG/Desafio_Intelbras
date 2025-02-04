@@ -9,11 +9,9 @@ import br.com.denis.desafio_intelbras.feature.products.domain.usecases.GetProduc
 import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.CategoryViewModel
 import br.com.denis.desafio_intelbras.feature.products.presentation.viewmodel.ProductDetailsViewModel
 import br.com.denis.desafio_intelbras.core.remote.RetrofitInstance
-import br.com.denis.desafio_intelbras.feature.products.domain.data.FavoriteRepository
 import br.com.denis.desafio_intelbras.feature.products.domain.data.FavoriteRepositoryRoom
 import br.com.denis.desafio_intelbras.feature.products.domain.data.ProductDetailRepository
 import br.com.denis.desafio_intelbras.feature.products.domain.data.local.AppDatabase
-import br.com.denis.desafio_intelbras.feature.products.domain.data.local.FavoriteDataStore
 import br.com.denis.desafio_intelbras.feature.products.domain.data.local.FavoriteProductDao
 import br.com.denis.desafio_intelbras.feature.products.domain.usecases.FavoriteUseCaseRoom
 import org.koin.android.ext.koin.androidContext
@@ -27,8 +25,6 @@ private val dataModule = module {
     single { CategoryRepository(get()) }
     single { ProductsRepository(get()) }
     single { ProductDetailRepository(get()) }
-    single { FavoriteRepository(get()) }
-    single { FavoriteDataStore(androidContext()) }
     single {
         Room.databaseBuilder(
             androidContext(),

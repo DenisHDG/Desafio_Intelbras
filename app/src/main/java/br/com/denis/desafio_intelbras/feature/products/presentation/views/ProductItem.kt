@@ -22,7 +22,7 @@ import br.com.denis.desafio_intelbras.feature.products.framework.models.Product
 fun ProductItem(
     product: Product,
     isFavorite: Boolean,
-    onFavoriteClick: (Int) -> Unit, // ou (Int) ou (Product) dependendo da sua assinatura
+    onFavoriteClick: (Int) -> Unit,
     onItemClick: (Int) -> Unit
 ) {
     Row(

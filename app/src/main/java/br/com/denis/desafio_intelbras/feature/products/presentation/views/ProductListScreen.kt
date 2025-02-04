@@ -22,12 +22,11 @@ fun ProductListScreen(
     categoryName: String,
     viewModel: ProductDetailsViewModel = koinViewModel(),
 ) {
-    // Coletando os favoritos e produtos
-    val products by viewModel.products.collectAsState(initial = emptyList())  // Lista de produtos
-    val favorites by viewModel.favorites.collectAsState(initial = emptyList())  // Lista de favoritos
+    val products by viewModel.products.collectAsState(initial = emptyList())
+    val favorites by viewModel.favorites.collectAsState(initial = emptyList())
 
     LaunchedEffect(categoryName) {
-        viewModel.fetchProductsByCategory(categoryName)  // Fetch dos produtos com base na categoria
+        viewModel.fetchProductsByCategory(categoryName)
     }
 
     Scaffold(topBar = {
@@ -43,14 +42,12 @@ fun ProductListScreen(
             contentPadding = padding,
             modifier = Modifier.fillMaxSize()
         ) {
-            // Iterando sobre os produtos e mostrando a lista
             items(products) { product ->
-                // Aqui, a lista de favoritos é mapeada para os IDs para facilitar a comparação
                 val favoriteIds = favorites.map { it.id }
 
                 ProductItem(
                     product = product,
-                    isFavorite = favoriteIds.contains(product.id),  // Verifica se o produto está nos favoritos
+                    isFavorite = favoriteIds.contains(product.id),
                     onFavoriteClick = { viewModel.toggleFavorite(product) },
                     onItemClick = { id -> navController.navigate("product_detail_rout/$id") }
                 )
